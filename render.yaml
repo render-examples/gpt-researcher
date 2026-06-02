@@ -7,9 +7,9 @@ services:
     # Install deps with UV into the venv Render runs from. No --python/--system needed:
     # uv targets the active venv ($VIRTUAL_ENV / .venv in cwd), both = /opt/render/project/src/.venv.
     buildCommand: pip install uv && uv pip install -r requirements.txt
-    # `uv run --no-project` runs uvicorn from that venv regardless of PATH; --no-project stops uv
-    # from trying to sync the stale pyproject.toml.
-    startCommand: uv run --no-project uvicorn main:app --host 0.0.0.0 --port $PORT
+    # Render activates .venv at runtime, so `python` is .venv/bin/python and uvicorn imports
+    # directly. (uv run --no-project would use an isolated env that can't see .venv's deps.)
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
