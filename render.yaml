@@ -6,7 +6,7 @@ services:
     region: oregon
     # Install deps with UV: bootstrap uv via pip, then install into the runtime env (--system)
     buildCommand: pip install uv && uv pip install --system -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
