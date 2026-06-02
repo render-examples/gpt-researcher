@@ -4,13 +4,12 @@ services:
     runtime: python
     plan: starter
     region: oregon
-    # Create ONE explicit venv and install into it. Render detects [tool.poetry] in pyproject.toml
-    # and boots the app from .venv at runtime, but a bare `uv pip install` resolves its own target
-    # and installs into the base interpreter instead -> runtime .venv has no deps. `uv venv` pins
-    # the target: uv pip install then auto-targets the cwd .venv (/opt/render/project/src/.venv).
-    buildCommand: pip install uv && uv venv && uv pip install -r requirements.txt
-    # Boot from that same venv by explicit path -- no reliance on which interpreter Render activates.
-    startCommand: .venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port $PORT
+    # Render detects [tool.poetry] in pyproject.toml, activates a .venv during build, and boots the
+    # app from it at runtime. Plain pip uses that activated .venv (pip == .venv/bin/pip), so deps land
+    # in the same env the app runs from. (uv is avoided here: Render injects --system/UV_SYSTEM_PYTHON,
+    # which forces `uv pip install` into the BASE interpreter instead of .venv -> "No module named ...".)
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
