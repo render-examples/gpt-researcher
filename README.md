@@ -2,11 +2,7 @@
 
 <img src="https://github.com/assafelovic/gpt-researcher/assets/13554167/20af8286-b386-44a5-9a83-3be1365139c3" alt="Logo" width="80">
 
-####
-
-[![Website](https://img.shields.io/badge/Official%20Website-gptr.dev-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://gptr.dev)
-[![Documentation](https://img.shields.io/badge/Documentation-DOCS-f472b6?logo=googledocs&logoColor=white&style=for-the-badge)](https://docs.gptr.dev)
-[![Discord](https://img.shields.io/discord/1127851779011391548?logo=discord&logoColor=white&label=Discord&color=34b76a&style=for-the-badge)](https://discord.gg/QgZXvJAccX)
+[![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/deploy?repo=https://github.com/render-examples/gpt-researcher)
 
 
 [![PyPI version](https://img.shields.io/pypi/v/gpt-researcher?logo=pypi&logoColor=white&style=flat)](https://badge.fury.io/py/gpt-researcher)
@@ -20,7 +16,9 @@
 
 </div>
 
-# 🔎 GPT Researcher
+# 🔎 Deploy GPT Researcher on Render
+
+This is a ready-to-deploy version of the open source deep research agent, preconfigured with a `render.yaml` Blueprint so you can launch your own hosted instance on [Render](https://render.com) in one click. Jump to [Deploy to Render](#-deploy-to-render) to get started.
 
 **GPT Researcher the first open deep research agent designed for both web and local research on any given task.** 
 
@@ -133,6 +131,22 @@ See the [Documentation](https://docs.gptr.dev/docs/gpt-researcher/getting-starte
 Visit [http://localhost:8000](http://localhost:8000) to start.
 
 For other setups (e.g., Poetry or virtual environments), check the [Getting Started page](https://docs.gptr.dev/docs/gpt-researcher/getting-started).
+
+## 🚀 Deploy to Render
+
+Run GPT Researcher in the cloud in minutes, with no servers to manage. This repository is a ready to use [Render](https://render.com) template, so you can launch your own hosted deep research agent straight from the browser.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/gpt-researcher)
+
+Click the button above and Render walks you through the rest:
+
+1. Connect your GitHub account and pick this repository.
+2. Add your `OPENAI_API_KEY` and `TAVILY_API_KEY` when prompted. Render stores them as encrypted secrets.
+3. Click **Apply** and watch the build run.
+
+Render reads the included `render.yaml` Blueprint, installs the dependencies from `requirements.txt`, and starts the app with Uvicorn. When the deploy goes live, open your service URL and start researching right away. Every push to your repository triggers an automatic redeploy, so your hosted agent always stays in sync with your code.
+
+To customize the service or add a database, worker, or cron job, edit `render.yaml` and read the [Render Blueprint reference](https://render.com/docs/blueprint-spec).
 
 ## Run as PIP package
 ```bash
