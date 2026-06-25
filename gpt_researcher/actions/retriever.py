@@ -22,9 +22,11 @@ def get_retriever(retriever: str):
         - serper: Serper API
         - duckduckgo: DuckDuckGo search
         - bing: Bing search
+        - brave: Brave Search API
         - arxiv: arXiv academic search
         - tavily: Tavily search API
         - exa: Exa search
+        - crw: fastCRW search (Firecrawl-compatible web scraper)
         - semantic_scholar: Semantic Scholar academic search
         - pubmed_central: PubMed Central medical literature
         - openalex: OpenAlex scholarly works catalog
@@ -61,6 +63,10 @@ def get_retriever(retriever: str):
             from gpt_researcher.retrievers import BingSearch
 
             return BingSearch
+        case "brave":
+            from gpt_researcher.retrievers import BraveSearch
+
+            return BraveSearch
         case "bocha":
             from gpt_researcher.retrievers import BoChaSearch
 
@@ -73,10 +79,18 @@ def get_retriever(retriever: str):
             from gpt_researcher.retrievers import TavilySearch
 
             return TavilySearch
+        case "groundroute":
+            from gpt_researcher.retrievers import GroundRouteSearch
+
+            return GroundRouteSearch
         case "exa":
             from gpt_researcher.retrievers import ExaSearch
 
             return ExaSearch
+        case "crw":
+            from gpt_researcher.retrievers import CRWRetriever
+
+            return CRWRetriever
         case "semantic_scholar":
             from gpt_researcher.retrievers import SemanticScholarSearch
 
