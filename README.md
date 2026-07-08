@@ -28,6 +28,12 @@ The agent produces detailed, factual, and unbiased research reports with citatio
 
 **Our mission is to empower individuals and organizations with accurate, unbiased, and factual information through AI.**
 
+## Deploy to Render
+
+Deploy GPT Researcher on Render in one click:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/gpt-researcher)
+
 ## Why GPT Researcher?
 
 - Objective conclusions for manual research can take weeks, requiring vast resources and time.
